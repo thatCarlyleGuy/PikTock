@@ -4,13 +4,17 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "ENV_PATH=./.env.dev strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "2.4.1"
+  },
   "dependencies": {
+    "axios": "^0.22.0",
     "knex": "0.21.18",
     "mime-types": "^2.1.27",
     "sqlite3": "5.0.0",
@@ -24,7 +28,12 @@
     "strapi-plugin-i18n": "3.6.8",
     "strapi-plugin-upload": "3.6.8",
     "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-utils": "3.6.8"
+    "strapi-utils": "3.6.8",
+    "twit": "^2.2.11",
+    "twitter": "^1.7.1",
+    "twitter-api-v2": "^1.5.2",
+    "universal-cookie": "^4.0.4",
+    "universal-cookie-koa": "^4.1.0"
   },
   "author": {
     "name": "A Strapi developer"

@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom'
+import GoogleLoginRedirect from './features/auth/GoogleLoginRedirect'
+import TwitterLoginRedirect from './features/auth/TwitterLoginRedirect'
+import './App.css'
+import UserProfile from './features/user-profile/UserProfile'
+import Login from './features/auth/Login'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Switch>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+
+      <Route exact path="/home">
+        <UserProfile />
+      </Route>
+
+      <Route path="/connect/google/redirect">
+        <GoogleLoginRedirect redirectTo="/home" />
+      </Route>
+      <Route path="/connect/twitter/redirect">
+        <TwitterLoginRedirect redirectTo="/home" />
+      </Route>
+    </Switch>
+  )
 }
 
-export default App;
+export default App
