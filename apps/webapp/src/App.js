@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom'
 import GoogleLoginRedirect from './features/auth/GoogleLoginRedirect'
 import TwitterLoginRedirect from './features/auth/TwitterLoginRedirect'
 import './App.css'
-import UserProfile from './features/user-profile/UserProfile'
+import Home from './features/home/Home'
 import Login from './features/auth/Login'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       </Route>
 
       <Route exact path="/home">
-        <UserProfile />
+        <Home />
       </Route>
 
       <Route path="/connect/google/redirect">

@@ -37,7 +37,7 @@ const TabsPanel = ({ panels }) => {
           <Tab.Panel
             key={panel.id}
             className={classNames(
-              'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60'
+              'focus:outline-none ring-offset-transparent ring-transparent'
             )}
           >
             {panel.children}

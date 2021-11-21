@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
-export const AUTH_BACKEND = 'http://1393-196-25-143-60.ngrok.io'
+export const AUTH_BACKEND = process.env.REACT_APP_AUTH_BACKEND
 export const GOOGLE_AUTH_URL = `${AUTH_BACKEND}/connect/google`
 export const TWITTER_AUTH_URL = `${AUTH_BACKEND}/connect/twitter`
 

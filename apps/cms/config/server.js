@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
   host: env("HOST", "0.0.0.0"),
   port: env.int("PORT", 1337),
-  url: env("SERVER_URL", "http://1393-196-25-143-60.ngrok.io"),
+  url: env("SERVER_URL", "http://562c-105-186-57-6.ngrok.io"),
   // url: env("", "http://localhost:1337"),
   admin: {
     auth: {

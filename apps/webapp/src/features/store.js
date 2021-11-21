@@ -11,10 +11,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
-
 import auth from './auth/authSlice'
+import tweetGrid from './tweet-grid/tweetGridSlice'
 import { authServiceSlice } from '../services/auth'
 import { twitterServiceSlice } from '../services/twitter'
+import { folderingServiceSlice } from '../services/foldering'
 
 const persistConfig = {
   key: 'root',
@@ -22,8 +23,10 @@ const persistConfig = {
 }
 const reducers = combineReducers({
   auth,
+  tweetGrid,
   [authServiceSlice.reducerPath]: authServiceSlice.reducer,
   [twitterServiceSlice.reducerPath]: twitterServiceSlice.reducer,
+  [folderingServiceSlice.reducerPath]: folderingServiceSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
