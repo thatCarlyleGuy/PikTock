@@ -52,7 +52,11 @@ TwitterUserInfo.propTypes = {
     name: PropTypes.string,
     username: PropTypes.string,
     description: PropTypes.string,
-  }).isRequired,
+  }),
+}
+
+TwitterUserInfo.defaultProps = {
+  user: {},
 }
 
 export default TwitterUserInfo

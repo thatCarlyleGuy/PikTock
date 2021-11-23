@@ -30,7 +30,6 @@ module.exports = {
 
   userLikedTweets: async (ctx) => {
     const { state, twitterClient } = ctx;
-    const { id } = ctx.params;
     const { username } = state.user;
 
     try {
@@ -40,7 +39,10 @@ module.exports = {
         `Twitter liked tweets retrieved [username="${username}"]`
       );
 
-      return likedTweets.data;
+      return {
+        likes: likedTweets?.data?.data,
+        meta: likedTweets?.data?.meta,
+      };
     } catch (e) {
       strapi.log.error(
         `Twitter client error [error="${e.message}", username="${username}"`

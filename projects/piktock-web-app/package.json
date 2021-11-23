@@ -7,11 +7,14 @@
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
     "@reduxjs/toolkit": "^1.6.1",
+    "@rtk-query/graphql-request-base-query": "^1.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9",
     "classnames": "^2.3.1",
+    "graphql": "^16.0.1",
+    "graphql-request": "^3.6.1",
     "lodash": "^4.17.21",
     "postcss": "^7",
     "prop-types": "^15.7.2",
@@ -31,7 +34,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "PORT=4949 craco start",
+    "start": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"

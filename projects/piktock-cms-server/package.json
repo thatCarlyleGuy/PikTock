@@ -3,8 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
+  "config": {
+    "proxy_hostname": "flaminggoose.piktock.ngrok.io"
+  },
   "scripts": {
-    "develop": "ENV_PATH=./.env.dev strapi develop",
+    "develop": "ENV_PATH=./.env strapi develop",
+    "develop:proxied": "ENV_PATH=./.env SERVER_URL=http://$npm_package_config_proxy_hostname strapi develop",
+    "proxy-service": "ngrok http --region=us --hostname=$npm_package_config_proxy_hostname 1337",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"

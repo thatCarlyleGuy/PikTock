@@ -1,8 +1,5 @@
 import { useSelector } from 'react-redux'
-import {
-  useGetTwitterUserQuery,
-  useGetUserLikedTweetsQuery,
-} from '../../services/twitter'
+import { useGetTwitterDataQuery } from '../../services/twitter'
 import { selectAuthUsername } from '../auth/authSlice'
 import TwitterUserInfo from '../../components/TwitterUserInfo/TwitterUserInfo'
 import TabsPanel from '../../components/TabsPanel'
@@ -15,32 +12,39 @@ import { useGetFoldersQuery } from '../../services/foldering'
 const Home = () => {
   const username = useSelector(selectAuthUsername)
   const {
-    data: userData,
-    error: userError,
-    isLoading: userIsLoading,
-    isFetching: userIsFetching,
-  } = useGetTwitterUserQuery(username, {
+    data: twitterUserData,
+    error: twitterDataError,
+    isLoading: twitterDataIsLoading,
+    // isFetching: userIsFetching,
+  } = useGetTwitterDataQuery(username, {
     refetchOnMountOrArgChange: true,
   })
 
-  const {
-    data: tweetData,
-    error: tweetError,
-    isLoading: tweetIsLoading,
-    isFetching: tweetIsFetching,
-  } = useGetUserLikedTweetsQuery(null, {
-    refetchOnMountOrArgChange: true,
-  })
   const {
     data: folderingData,
     error: folderingError,
     isLoading: folderingIsLoading,
-    isFetching: folderingIsFetching,
+    // isFetching: folderingIsFetching,
   } = useGetFoldersQuery(null, {
     refetchOnMountOrArgChange: true,
   })
 
-  console.log({ folderingData })
+  if (twitterDataIsLoading || folderingIsLoading) {
+    return ''
+  }
+
+  if (twitterDataError || folderingError) {
+    return (
+      <div>
+        <pre>twitterDataError: {twitterDataError}</pre>
+        <pre>folderingError: {folderingError}</pre>
+      </div>
+    )
+  }
+
+  const { userTwitterProfile, userTwitterLikes } = twitterUserData
+
+  console.log(folderingData)
 
   return (
     <div className="flex flex-col h-screen max-w-screen-lg mx-auto">
@@ -53,17 +57,19 @@ const Home = () => {
 
         <div className="py-8 pl-32 pr-5 flex flex-col w-full">
           <div className="mb-5 pr-14">
-            <TwitterUserInfo user={userData} />
+            <TwitterUserInfo user={userTwitterProfile} />
           </div>
 
           <div>
-            {tweetData?.data && (
+            {userTwitterLikes && (
               <LazyTweetsProvider>
                 <TabsPanel
                   panels={{
                     Likes: {
                       id: '1',
-                      children: <TweetGrid tweetsPaginator={tweetData} />,
+                      children: (
+                        <TweetGrid tweetsPaginator={userTwitterLikes} />
+                      ),
                     },
                   }}
                 />
